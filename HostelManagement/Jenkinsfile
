@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'feature/akash',
+                    url: 'https://github.com/projectamitit-glitch/HostelManagement-Team05.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'pkill -f HostelManagement || true'
+                sh 'nohup java -jar target/*.jar &'
+            }
+        }
+    }
+}
