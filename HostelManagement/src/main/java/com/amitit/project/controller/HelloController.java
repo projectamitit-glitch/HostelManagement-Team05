@@ -9,5 +9,12 @@ public class HelloController {
 	public String helloworld() {
 		return "ok Done!";
 	}
+	
+	@GetMapping("demo")
+	public String demo() {
+		return "ok Done by sam!";
+	}
+	
+	
 
 }
