@@ -12,13 +12,7 @@ public class HostelServiceExceptionHandler  extends RuntimeException{
 			this.httpStatus=httpStatus;
 		}
 		
-		public String getHostelServiceExceptionMessage() {
-			return errorMessage;
-		}
 		
-		public HttpStatus getStatus() {
-			return httpStatus;
-		}
 
 		public String getErrorMessage() {
 			return errorMessage;
