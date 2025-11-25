@@ -1,5 +1,9 @@
 package com.avsoft.hostelmanagement.service;
 
-public interface UserService {
+import com.avsoft.hostelmanagement.entity.User;
 
+public interface UserService{
+	
+	public void signup(User user);
+	
 }
