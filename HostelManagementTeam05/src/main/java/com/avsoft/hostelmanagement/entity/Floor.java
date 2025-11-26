@@ -40,4 +40,61 @@ public class Floor {
 
     @OneToMany(mappedBy = "floor", cascade = CascadeType.ALL)
     private List<Room> rooms;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getFloorNo() {
+		return floorNo;
+	}
+
+	public void setFloorNo(int floorNo) {
+		this.floorNo = floorNo;
+	}
+
+	public int getNoOfRooms() {
+		return noOfRooms;
+	}
+
+	public void setNoOfRooms(int noOfRooms) {
+		this.noOfRooms = noOfRooms;
+	}
+
+	public String getFloorType() {
+		return floorType;
+	}
+
+	public void setFloorType(String floorType) {
+		this.floorType = floorType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Building getBuilding() {
+		return building;
+	}
+
+	public void setBuilding(Building building) {
+		this.building = building;
+	}
+
+	public List<Room> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Room> rooms) {
+		this.rooms = rooms;
+	}
+    
 }

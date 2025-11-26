@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int bookingId;
+	private int Id;
 	private int userId;
 	private int bedId;
 	private String status;
@@ -28,4 +28,47 @@ public class Booking {
 	private String paymentStatus;
 	@OneToOne(mappedBy = "booking")
 	private Payment payment;
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public int getBedId() {
+		return bedId;
+	}
+	public void setBedId(int bedId) {
+		this.bedId = bedId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public LocalDateTime getDate() {
+		return date;
+	}
+	public void setDate(LocalDateTime date) {
+		this.date = date;
+	}
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+	public Payment getPayment() {
+		return payment;
+	}
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+	
 }
