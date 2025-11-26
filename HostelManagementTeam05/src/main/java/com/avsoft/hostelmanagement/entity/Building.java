@@ -3,8 +3,6 @@ package com.avsoft.hostelmanagement.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
