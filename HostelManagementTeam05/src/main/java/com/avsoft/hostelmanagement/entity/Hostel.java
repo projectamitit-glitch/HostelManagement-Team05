@@ -40,8 +40,8 @@ public class Hostel {
     private String genderType; 
     private String description;
 
-    private double latitude;
-    private double longitude;
+    private Double latitude;
+    private Double longitude;
 
     private String status; 
     private LocalDate createdAt;

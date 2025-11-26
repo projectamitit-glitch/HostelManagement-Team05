@@ -34,9 +34,9 @@ public class Room {
     private String status;   // AVAILABLE / FULL / MAINTENANCE
 
 
-    private double pricePerBed;
-    private boolean attachedBathroom;
-    private boolean balcony;
+    private Double pricePerBed;
+    private Boolean attachedBathroom;
+    private Boolean balcony;
 
     @ManyToOne
     @JoinColumn(name = "floor_id")

@@ -36,7 +36,7 @@ public class Building {
     private String warden;
     private String contactNo;
 
-    private boolean maintenanceRequired;
+    private Boolean maintenanceRequired;
     private String status;
 
     private LocalDate createdAt;

@@ -30,7 +30,7 @@ public class Bed {
     private String price;
     private int sharing;   //1sharing,2sharing,3sharing
 
-    private boolean booked;
+    private Boolean booked;
     private LocalDate bookedFrom;
     private LocalDate bookedTo;
 
