@@ -25,11 +25,11 @@ public class Bed {
     private Long id;
 
     private String bedNo;
-    private String status;  // AVAILABLE / BOOKED
+    private String status;
 
     private String price;
-    private int sharing;   //1sharing,2sharing,3sharing
-
+    private int sharing;  
+    
     private boolean booked;
     private LocalDate bookedFrom;
     private LocalDate bookedTo;

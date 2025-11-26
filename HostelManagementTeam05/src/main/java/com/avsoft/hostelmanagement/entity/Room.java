@@ -24,25 +24,27 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Room {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private int roomNo;
-    private String type;    // SINGLE / DOUBLE / TRIPLE
+	private int roomNo;
+	
+	private String type;
 
-    private String status;   // AVAILABLE / FULL / MAINTENANCE
+	private String status;
 
+	private double pricePerBed;
+	
+	private boolean attachedBathroom;
+	
+	private boolean balcony;
 
-    private double pricePerBed;
-    private boolean attachedBathroom;
-    private boolean balcony;
+	@ManyToOne
+	@JoinColumn(name = "floor_id")
+	@JsonIgnore
+	private Floor floor;
 
-    @ManyToOne
-    @JoinColumn(name = "floor_id")
-    @JsonIgnore
-    private Floor floor;
-
-    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-    private List<Bed> beds;
+	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+	private List<Bed> beds;
 }
