@@ -25,6 +25,7 @@ public class OrganizationController {
 	@Autowired
 	OrganizationService organizationService;
 	
+	//create organaization
 	@PostMapping
 	public ResponseEntity<ApiResponse<OrganizationDto>> createOrganization(@RequestBody OrganizationDto dto){
 		OrganizationDto createdOrgDto = organizationService.createOrganization(dto);
