@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.avsoft.hostelmanagement.exceptionHandler.HostelServiceExceptionHandler;
+import com.avsoft.hostelmanagement.exceptionHandler.OrganizationException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -14,5 +15,9 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity(hostelExpHandler.getErrorMessage(),hostelExpHandler.getHttpStatus());
 	}
 	
+	@ExceptionHandler(OrganizationException.class)
+	public ResponseEntity<String> organizationException(OrganizationException orgExpHandler) {
+		return new ResponseEntity<>(orgExpHandler.getErrorMessage(),orgExpHandler.getHttpStatus());
+	}
 	
 }
