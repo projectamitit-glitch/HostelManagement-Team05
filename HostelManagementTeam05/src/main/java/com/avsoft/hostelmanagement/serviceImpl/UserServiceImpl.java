@@ -11,31 +11,25 @@ import com.avsoft.hostelmanagement.exceptionHandler.UserCustomeException;
 import com.avsoft.hostelmanagement.repostiory.UserRepository;
 import com.avsoft.hostelmanagement.service.UserService;
 
-
 @Service
 public class UserServiceImpl implements UserService {
 
-	
-   @Autowired
-   UserRepository userRepo;
-	
-   
-   
-	@Override
-	
-    public void signup(User user) {
+	@Autowired
+	UserRepository userRepo;
 
-        
+	@Override
+	public void signup(User user) {
+
 		User existingUser = userRepo.findByUserName(user.getUserName()).orElse(null);
 
-        if (existingUser != null) {
-            throw new UserCustomeException("Username already exists", HttpStatus.BAD_REQUEST);
-        }
+		if (existingUser != null) {
+			throw new UserCustomeException("Username already exists", HttpStatus.BAD_REQUEST);
+		}
 
-        user.setCreatedDate(LocalDateTime.now());
-        user.setUpdatedDate(LocalDateTime.now());
-        user.setRole("USER");
+		user.setCreatedDate(LocalDateTime.now());
+		user.setUpdatedDate(LocalDateTime.now());
+		user.setRole("USER");
 
-        userRepo.save(user);
-    }
+		userRepo.save(user);
+	}
 }

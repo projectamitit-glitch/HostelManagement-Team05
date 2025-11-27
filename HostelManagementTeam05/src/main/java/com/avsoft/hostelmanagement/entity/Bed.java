@@ -20,21 +20,21 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Bed {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String bedNo;
-    private String status;
+	private String bedNo;
+	private String status;
 
-    private String price;
-    private int sharing;  
-    
-    private boolean booked;
-    private LocalDate bookedFrom;
-    private LocalDate bookedTo;
+	private String price;
+	private int sharing;
 
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
+	private boolean booked;
+	private LocalDate bookedFrom;
+	private LocalDate bookedTo;
+
+	@ManyToOne
+	@JoinColumn(name = "room_id")
+	private Room room;
 }
