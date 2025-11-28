@@ -1,7 +1,5 @@
 package com.avsoft.hostelmanagement.exceptionHandler;
 
-
-
 import org.springframework.http.HttpStatus;
 
 public class HostelServiceExceptionHandler  extends RuntimeException{

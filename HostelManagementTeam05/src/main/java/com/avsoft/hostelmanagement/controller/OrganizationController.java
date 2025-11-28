@@ -15,23 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.avsoft.hostelmanagement.dto.OrganizationDto;
 import com.avsoft.hostelmanagement.entity.Organization;
-import com.avsoft.hostelmanagement.repostiory.OrganizationRepository;
 import com.avsoft.hostelmanagement.service.OrganizationService;
 
 @RestController
 @RequestMapping("/organization")
 public class OrganizationController {
 
-    private final OrganizationRepository organizationRepository;
-	
+   
 	@Autowired
 	OrganizationService organizationService;
-
-
-    OrganizationController(OrganizationRepository organizationRepository) {
-        this.organizationRepository = organizationRepository;
-    }
-	
 	
 	@PostMapping("/org")
 	public ResponseEntity<Organization> saveOrganization(@RequestBody OrganizationDto dto){
