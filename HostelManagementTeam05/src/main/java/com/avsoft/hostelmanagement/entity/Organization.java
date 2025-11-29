@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class Organization {
 
@@ -34,7 +33,7 @@ public class Organization {
     private String gstNo;
     private String logoUrl;
 
-    private String status; // ACTIVE / INACTIVE
+    private String status; 
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
