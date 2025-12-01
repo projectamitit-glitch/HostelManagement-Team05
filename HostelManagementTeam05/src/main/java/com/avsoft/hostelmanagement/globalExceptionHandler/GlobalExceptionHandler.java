@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.avsoft.hostelmanagement.exceptionHandler.BuildingException;
+import com.avsoft.hostelmanagement.exceptionHandler.FloorServiceException;
 import com.avsoft.hostelmanagement.exceptionHandler.HostelServiceExceptionHandler;
 import com.avsoft.hostelmanagement.exceptionHandler.OrganizationException;
 
@@ -28,6 +29,9 @@ public class GlobalExceptionHandler {
 	    return new ResponseEntity<>(buildingExp.getErrorMessage(), buildingExp.getHttpStatus());
 	}
 
-	
+	@ExceptionHandler(FloorServiceException.class)
+	public ResponseEntity<String> flooServiceException(BuildingException buildingExp) {
+	    return new ResponseEntity<>(buildingExp.getErrorMessage(), buildingExp.getHttpStatus());
+	}
 	
 }
