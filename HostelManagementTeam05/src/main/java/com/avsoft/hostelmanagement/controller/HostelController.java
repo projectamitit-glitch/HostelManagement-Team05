@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avsoft.hostelmanagement.MessageConstant.MessageConstant;
 import com.avsoft.hostelmanagement.dto.HostelDto;
 import com.avsoft.hostelmanagement.entity.Hostel;
+import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.HostelService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,35 +27,51 @@ public class HostelController {
 	HostelService hostelService;
 
 	@PostMapping("/hostel")
-	public ResponseEntity<Hostel> postHostel(@RequestBody HostelDto hostelDto) {
-	    log.info("Controller received DTO: {}", hostelDto);
+	public ResponseEntity<ApiResponse<Hostel>> postHostel(@RequestBody HostelDto hostelDto) {
 
-		Hostel hos = hostelService.saveHostel(hostelDto);
-		return new ResponseEntity<Hostel>(hos, HttpStatus.CREATED);
+	    Hostel hos = hostelService.saveHostel(hostelDto);
+
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.HOSTEL_CREATED_SUCCESS, hos),
+	            HttpStatus.CREATED
+	    );
 	}
-	
+
 	@GetMapping("/getHostel/{id}")
-	public ResponseEntity<Hostel> getbyId(@PathVariable long id) {
-		 return new ResponseEntity<Hostel>(hostelService.getHostelById(id),HttpStatus.OK);
+	public ResponseEntity<ApiResponse<Hostel>> getbyId(@PathVariable long id) {
+	    Hostel hostel = hostelService.getHostelById(id);
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.HOSTEL_FETCH_SUCCESS, hostel),
+	            HttpStatus.OK
+	    );
 	}
-	
+
 	@GetMapping("/getAllforHostel")
-	public ResponseEntity<List<Hostel>> getAll() {
-		return new ResponseEntity<List<Hostel>>(hostelService.getHostel(),HttpStatus.OK);
+	public ResponseEntity<ApiResponse<List<Hostel>>> getAll() {
+	    List<Hostel> list = hostelService.getHostel();
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.HOSTEL_LIST_FETCH_SUCCESS, list),
+	            HttpStatus.OK
+	    );
 	}
-	
+
 	@DeleteMapping("/deleteHostel/{id}")
-	public ResponseEntity<String> deleteHostel(@PathVariable Long id){
-		hostelService.deleteHostel(id);
-		return new ResponseEntity<>("Organization deleted sucessfully",HttpStatus.NO_CONTENT);
-		
+	public ResponseEntity<ApiResponse<String>> deleteHostel(@PathVariable Long id){
+	    hostelService.deleteHostel(id);
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.HOSTEL_DELETE_SUCCESS, null),
+	            HttpStatus.NO_CONTENT
+	    );
 	}
-	
+
 	@DeleteMapping("/deleteAllHostel")
-	public ResponseEntity<String> deleteAll(){
-		hostelService.deleteAllHostel();
-		return new ResponseEntity<>("Organization deleted sucessfully",HttpStatus.NO_CONTENT);
-		
+	public ResponseEntity<ApiResponse<String>> deleteAll(){
+	    hostelService.deleteAllHostel();
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.HOSTEL_DELETE_ALL_SUCCESS, null),
+	            HttpStatus.NO_CONTENT
+	    );
 	}
+
 
 }

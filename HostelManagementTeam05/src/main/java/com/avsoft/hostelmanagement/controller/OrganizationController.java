@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avsoft.hostelmanagement.MessageConstant.MessageConstant;
 import com.avsoft.hostelmanagement.dto.OrganizationDto;
 import com.avsoft.hostelmanagement.entity.Organization;
+import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.OrganizationService;
 
 @RestController
@@ -26,29 +28,40 @@ public class OrganizationController {
 	OrganizationService organizationService;
 	
 	@PostMapping("/org")
-	public ResponseEntity<Organization> saveOrganization(@RequestBody OrganizationDto dto){
-		Organization saveOrganization = organizationService.saveOrganization(dto);
-		return new ResponseEntity<Organization>(saveOrganization,HttpStatus.CREATED);	
+	public ResponseEntity<ApiResponse<Organization>> saveOrganization(@RequestBody OrganizationDto dto){
+	    Organization saved = organizationService.saveOrganization(dto);
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.ORG_CREATED_SUCCESS, saved),
+	            HttpStatus.CREATED
+	    );
 	}
-	
+
 	@GetMapping("/org/{id}")
-	public ResponseEntity<Organization> getOrganizationById(@PathVariable Long id){
-		Organization getById = organizationService.getOrganizationById(id);
-		return new ResponseEntity<Organization>(getById,HttpStatus.OK);	
+	public ResponseEntity<ApiResponse<Organization>> getOrganizationById(@PathVariable Long id){
+	    Organization org = organizationService.getOrganizationById(id);
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.ORG_FETCH_SUCCESS, org),
+	            HttpStatus.OK
+	    );
 	}
-	
+
 	@GetMapping("/org")
-	public ResponseEntity<List<Organization>> getAllOrganization(){
-		List<Organization> allOrganizations = organizationService.getAllOrganizations();
-		return new ResponseEntity<List<Organization>>(allOrganizations,HttpStatus.OK);
-		
+	public ResponseEntity<ApiResponse<List<Organization>>> getAllOrganization(){
+	    List<Organization> list = organizationService.getAllOrganizations();
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.ORG_LIST_FETCH_SUCCESS, list),
+	            HttpStatus.OK
+	    );
 	}
-	
+
 	@DeleteMapping("/org/{id}")
-	public ResponseEntity<String> deleteOrganization(@PathVariable Long id){
-		organizationService.deleteOrganization(id);
-		return new ResponseEntity<>("Organization deleted sucessfully",HttpStatus.NO_CONTENT);
-		
+	public ResponseEntity<ApiResponse<String>> deleteOrganization(@PathVariable Long id){
+	    organizationService.deleteOrganization(id);
+	    return new ResponseEntity<>(
+	            new ApiResponse<>(MessageConstant.ORG_DELETE_SUCCESS, null),
+	            HttpStatus.NO_CONTENT
+	    );
 	}
+
 
 }
