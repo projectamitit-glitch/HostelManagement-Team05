@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avsoft.hostelmanagement.MessageConstant.MessageConstant;
 import com.avsoft.hostelmanagement.entity.User;
+import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.UserService;
 
 
@@ -19,8 +21,11 @@ public class UserController {
   UserService service;
  
  @PostMapping("/signup")
-	public ResponseEntity signUp(@RequestBody User user) {
-		service.signup(user);
-		return new ResponseEntity<>("User registered successfully", HttpStatus.CREATED);
-	}
-} 
+ public ResponseEntity<ApiResponse<User>> signUp(@RequestBody User user) {
+     service.signup(user);
+     return new ResponseEntity<>(
+             new ApiResponse<>(MessageConstant.USER_REGISTER_SUCCESS, user),
+             HttpStatus.CREATED
+     );
+ }
+}
