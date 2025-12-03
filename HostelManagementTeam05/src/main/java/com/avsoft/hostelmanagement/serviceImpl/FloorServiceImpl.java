@@ -64,7 +64,7 @@ public class FloorServiceImpl implements FloorService {
                 )
         );
 
-        GetFloorDto dto = new GetFloorDto();
+        FloorDto dto = new FloorDto();
         dto.setId(floor.getId());
         dto.setFloorNo(floor.getFloorNo());
         dto.setNoOfRooms(floor.getNoOfRooms());

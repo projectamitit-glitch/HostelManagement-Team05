@@ -1,21 +1,12 @@
 package com.avsoft.hostelmanagement.entity;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,27 +14,27 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Room {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private int roomNo;
-	
-	private String type;
+    private int roomNo;
 
-	private String status;
+    private String type;     // SINGLE, DOUBLE, etc.
 
-	private double pricePerBed;
-	
-	private boolean attachedBathroom;
-	
-	private boolean balcony;
+    private String status;   // AVAILABLE, FILLED
 
-	@ManyToOne
-	@JoinColumn(name = "floor_id")
-	@JsonIgnore
-	private Floor floor;
+    private Double pricePerBed;
 
-	@OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
-	private List<Bed> beds;
+    private Boolean attachedBathroom;
+
+    private Boolean balcony;
+
+    @ManyToOne(fetch = FetchType.LAZY) // Lazy loading is better for performance
+    @JoinColumn(name = "floor_id")
+    @JsonIgnore
+    private Floor floor;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Bed> beds;
 }
