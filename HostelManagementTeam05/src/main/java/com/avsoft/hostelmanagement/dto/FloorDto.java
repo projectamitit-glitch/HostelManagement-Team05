@@ -15,7 +15,10 @@ public class FloorDto {
     private String floorType; 
     private String status;
     
-    // Foreign Key to link Parent Building
     private Long buildingId;
+    
+    private String buildingName;
+    private String hostelName;
+    private String orgName;
 
 }

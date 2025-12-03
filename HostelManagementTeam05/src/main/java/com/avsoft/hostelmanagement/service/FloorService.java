@@ -6,14 +6,14 @@ import com.avsoft.hostelmanagement.dto.FloorDto;
 import com.avsoft.hostelmanagement.dto.GetFloorDto;
 
 public interface FloorService {
-	void addFloor(int buildingId, FloorDto floorDto);
+	
+    void addFloor(Long buildingId, FloorDto floorDto);
 
-	List<GetFloorDto> getFloorByBuildingId(int id);
+    FloorDto getFloorById(Long id);
 
-	GetFloorDto getFloorById(int id);
+    List<FloorDto> getFloorByBuildingId(Long buildingId);
 
-	List<GetFloorDto> getAllFloors();
+    List<FloorDto> getAllFloors();
 
-	void deleteFloorById(int id);
-
+    void deleteFloorById(Long floorId);
 }

@@ -20,9 +20,9 @@ public class Room {
 
     private int roomNo;
 
-    private String type;     // SINGLE, DOUBLE, etc.
+    private String type;     
 
-    private String status;   // AVAILABLE, FILLED
+    private String status;   
 
     private Double pricePerBed;
 
@@ -30,7 +30,7 @@ public class Room {
 
     private Boolean balcony;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Lazy loading is better for performance
+    @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name = "floor_id")
     @JsonIgnore
     private Floor floor;
