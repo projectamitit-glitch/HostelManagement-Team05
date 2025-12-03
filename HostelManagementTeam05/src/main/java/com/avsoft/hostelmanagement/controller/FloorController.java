@@ -3,48 +3,66 @@ package com.avsoft.hostelmanagement.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import com.avsoft.hostelmanagement.constants.MessageConstant;
 import com.avsoft.hostelmanagement.dto.FloorDto;
+import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.FloorService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/floor")
+@RequestMapping("/api/floors")
 public class FloorController {
 
-    @Autowired
-    FloorService floorService;
+	@Autowired
+	private FloorService floorService;
 
-    @PostMapping("/add/{buildingId}")
-    ResponseEntity<String> saveFloor(@PathVariable int buildingId, @RequestBody FloorDto floorDto) {
-        floorService.addFloor(buildingId, floorDto);
-        return new ResponseEntity<>("Floor created successfully", HttpStatus.CREATED);
-    }
+	
+	@PostMapping("/{buildingId}")
+	public ResponseEntity<ApiResponse<String>> saveFloor(@PathVariable Long buildingId,
+			@RequestBody FloorDto floorDto) {
 
-    @GetMapping("/getByFloorId/{floorId}")
-    ResponseEntity<?> getFloorById(@PathVariable int floorId) {
-        return new ResponseEntity<>(floorService.getFloorById(floorId), HttpStatus.OK);
-    }
+		floorService.addFloor(buildingId, floorDto);
 
-    @GetMapping("/getAll")
-    ResponseEntity<?> getAllFloors() {
-        return new ResponseEntity<>(floorService.getAllFloors(), HttpStatus.OK);
-    }
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_CREATED_SUCCESS, null), HttpStatus.CREATED);
+	}
 
-    @GetMapping("/getByBuildingId/{buildingId}")
-    ResponseEntity<?> getFloorByBuildingId(@PathVariable int buildingId) {
-        return new ResponseEntity<>(floorService.getFloorByBuildingId(buildingId), HttpStatus.OK);
-    }
+	
+	@GetMapping("/{floorId}")
+	public ResponseEntity<ApiResponse<FloorDto>> getFloorById(@PathVariable Long floorId) {
 
-    @DeleteMapping("/delete/{floorId}")
-    ResponseEntity<String> deleteFloorById(@PathVariable int floorId) {
-        floorService.deleteFloorById(floorId);
-        return new ResponseEntity<>("Floor deleted successfully with ID: " + floorId, HttpStatus.OK);
-    }
+		FloorDto dto = floorService.getFloorById(floorId);
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_FETCH_SUCCESS, dto), HttpStatus.OK);
+	}
+
+	
+	@GetMapping
+	public ResponseEntity<ApiResponse<List<FloorDto>>> getAllFloors() {
+
+		List<FloorDto> floors = floorService.getAllFloors();
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_LIST_FETCH_SUCCESS, floors), HttpStatus.OK);
+	}
+
+
+	@GetMapping("/building/{buildingId}")
+	public ResponseEntity<ApiResponse<List<FloorDto>>> getFloorByBuildingId(@PathVariable Long buildingId) {
+
+		List<FloorDto> floors = floorService.getFloorByBuildingId(buildingId);
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_BY_BUILDING_FETCH_SUCCESS, floors),
+				HttpStatus.OK);
+	}
+
+	
+	@DeleteMapping("/{floorId}")
+	public ResponseEntity<ApiResponse<String>> deleteFloorById(@PathVariable Long floorId) {
+
+		floorService.deleteFloorById(floorId);
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_DELETE_SUCCESS, null), HttpStatus.OK);
+	}
 }

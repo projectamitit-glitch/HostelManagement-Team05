@@ -11,5 +11,5 @@ import com.avsoft.hostelmanagement.entity.Floor;
 
 public interface FloorRepository extends JpaRepository<Floor, Long>  {
 
-	List<GetFloorDto> findByBuildingId(int id);
+	List<GetFloorDto> findByBuildingId(Long id);
 }
