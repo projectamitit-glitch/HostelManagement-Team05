@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.avsoft.hostelmanagement.constants.MessageConstant;
 import com.avsoft.hostelmanagement.dto.FloorDto;
 import com.avsoft.hostelmanagement.dto.RoomDto;
 import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.RoomService;
+import com.avsoft.hostelmanagement.util.MessageConstant;
 
 @RestController
 @RequestMapping("/api/rooms")

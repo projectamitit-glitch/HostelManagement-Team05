@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.avsoft.hostelmanagement.constants.MessageConstant;
 import com.avsoft.hostelmanagement.entity.User;
 import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.UserService;
+import com.avsoft.hostelmanagement.util.MessageConstant;
 
 
 @RestController
