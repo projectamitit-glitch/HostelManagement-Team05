@@ -3,6 +3,8 @@ package com.avsoft.hostelmanagement.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.data.convert.Jsr310Converters.LocalDateTimeToDateConverter;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -44,5 +46,12 @@ public class User {
 	private LocalDateTime createdDate;
 	private LocalDateTime updatedDate;
 	private String role;
+	
+	
+	private String otp;
+	
+	private LocalDateTime otpGeneratedAt;
+	
+	private  boolean emailVerified = false;
 
 }
