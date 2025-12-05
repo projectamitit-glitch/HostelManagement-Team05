@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.avsoft.hostelmanagement.util.MessageConstant;
@@ -22,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/hostel")
 public class HostelController {
 	@Autowired
 	HostelService hostelService;
@@ -37,7 +39,7 @@ public class HostelController {
 	    );
 	}
 
-	@GetMapping("/getHostel/{id}")
+	@GetMapping("/hostel/{id}")
 	public ResponseEntity<ApiResponse<Hostel>> getbyId(@PathVariable long id) {
 	    Hostel hostel = hostelService.getHostelById(id);
 	    return new ResponseEntity<>(
@@ -46,7 +48,7 @@ public class HostelController {
 	    );
 	}
 
-	@GetMapping("/getAllforHostel")
+	@GetMapping("/allhostel")
 	public ResponseEntity<ApiResponse<List<Hostel>>> getAll() {
 	    List<Hostel> list = hostelService.getHostel();
 	    return new ResponseEntity<>(
@@ -55,7 +57,7 @@ public class HostelController {
 	    );
 	}
 
-	@DeleteMapping("/deleteHostel/{id}")
+	@DeleteMapping("/hostel/{id}")
 	public ResponseEntity<ApiResponse<String>> deleteHostel(@PathVariable Long id){
 	    hostelService.deleteHostel(id);
 	    return new ResponseEntity<>(
@@ -64,7 +66,7 @@ public class HostelController {
 	    );
 	}
 
-	@DeleteMapping("/deleteAllHostel")
+	@DeleteMapping("/allhostel")
 	public ResponseEntity<ApiResponse<String>> deleteAll(){
 	    hostelService.deleteAllHostel();
 	    return new ResponseEntity<>(

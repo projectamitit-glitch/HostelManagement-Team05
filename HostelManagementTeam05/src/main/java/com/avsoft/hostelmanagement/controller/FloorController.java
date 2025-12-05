@@ -13,7 +13,7 @@ import com.avsoft.hostelmanagement.service.FloorService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/floors")
+@RequestMapping("/floor")
 public class FloorController {
 
 	@Autowired
@@ -39,7 +39,6 @@ public class FloorController {
 	}
 
 	
-	@GetMapping
 	public ResponseEntity<ApiResponse<List<FloorDto>>> getAllFloors() {
 
 		List<FloorDto> floors = floorService.getAllFloors();
@@ -48,7 +47,7 @@ public class FloorController {
 	}
 
 
-	@GetMapping("/building/{buildingId}")
+	@GetMapping("/floor/{buildingId}")
 	public ResponseEntity<ApiResponse<List<FloorDto>>> getFloorByBuildingId(@PathVariable Long buildingId) {
 
 		List<FloorDto> floors = floorService.getFloorByBuildingId(buildingId);
