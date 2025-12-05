@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.avsoft.hostelmanagement.constants.MessageConstant;
+import com.avsoft.hostelmanagement.util.MessageConstant;
 import com.avsoft.hostelmanagement.dto.FloorDto;
 import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.FloorService;
