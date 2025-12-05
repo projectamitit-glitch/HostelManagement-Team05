@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.avsoft.hostelmanagement.util.MessageConstant;
@@ -74,6 +75,18 @@ public class HostelController {
 	            HttpStatus.NO_CONTENT
 	    );
 	}
-
+	
+	@GetMapping("/search")
+    public ResponseEntity<ApiResponse<List<HostelDto>>> searchHostels(
+            @RequestParam(required = false) String city, 
+            @RequestParam(required = false) String area) {
+        
+        List<HostelDto> searchResults = hostelService.searchHostels(city, area);
+        
+        return new ResponseEntity<>(
+                new ApiResponse<>("Hostel search results fetched successfully.", searchResults),
+                HttpStatus.OK
+        );
+    }
 
 }
