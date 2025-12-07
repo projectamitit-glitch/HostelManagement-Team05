@@ -12,6 +12,7 @@ import com.avsoft.hostelmanagement.entity.Address;
 import com.avsoft.hostelmanagement.entity.Hostel;
 import com.avsoft.hostelmanagement.entity.Organization;
 import com.avsoft.hostelmanagement.exceptionHandler.HostelServiceExceptionHandler;
+import com.avsoft.hostelmanagement.repostiory.AddressRepository;
 import com.avsoft.hostelmanagement.repostiory.HostelRepository;
 import com.avsoft.hostelmanagement.repostiory.OrganizationRepository;
 import com.avsoft.hostelmanagement.service.HostelService;
@@ -26,6 +27,9 @@ public class HostelServiceImpl implements HostelService {
 
 	@Autowired
 	OrganizationRepository organizationRepository;
+	
+	@Autowired
+	AddressRepository addressRepository;
 
 	public Hostel saveHostel(HostelDto hostelDto) {
 
@@ -59,6 +63,12 @@ public class HostelServiceImpl implements HostelService {
 
             // Link Address to Hostel
             hostel.setAddresss(addressEntity); 
+            
+            
+            Address savedAddress = addressRepository.save(addressEntity);
+
+
+            hostel.setAddresss(savedAddress);
         }
 
 		return hostelRepository.save(hostel);
