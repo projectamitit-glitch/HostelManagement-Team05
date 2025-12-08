@@ -1,6 +1,7 @@
 package com.avsoft.hostelmanagement.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -12,9 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -49,6 +48,10 @@ public class Hostel {
 
 	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
 	private List<Building> buildings;
+	
+	
+	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
+	private List<Image> images = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "organization_id")

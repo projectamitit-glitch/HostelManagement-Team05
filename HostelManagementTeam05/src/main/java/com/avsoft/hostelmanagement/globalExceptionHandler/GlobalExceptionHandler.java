@@ -8,7 +8,9 @@ import com.avsoft.hostelmanagement.exceptionHandler.BedException;
 import com.avsoft.hostelmanagement.exceptionHandler.BuildingException;
 import com.avsoft.hostelmanagement.exceptionHandler.FloorServiceException;
 import com.avsoft.hostelmanagement.exceptionHandler.HostelServiceExceptionHandler;
+import com.avsoft.hostelmanagement.exceptionHandler.ImageServiceException;
 import com.avsoft.hostelmanagement.exceptionHandler.OrganizationException;
+import com.avsoft.hostelmanagement.service.ImageService;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -39,6 +41,12 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<String> bedException(BedException ex) {
 	    return new ResponseEntity<>(ex.getErrorMessage(), ex.getHttpStatus());
 	}
+	
+	@ExceptionHandler(ImageServiceException.class)
+	public ResponseEntity<String> ImageServiceException(ImageServiceException imgExp) {
+	    return new ResponseEntity<>(imgExp.getErrorMessage(), imgExp.getStatus());
+	}
+	
 
 	
 }
