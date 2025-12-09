@@ -47,25 +47,25 @@ pipeline {
 
                     if (params.ENVIRONMENT == 'prod') {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-prod"
-                        env.HOST_PORT = "8091"
+                        env.HOST_PORT = "8093"
                         env.DB_HOST = "team_5_prod_postgres"
                         env.DB_NAME = "team_5_prod_db"
-                        CRED_ID = "team4_prod_credentials"
+                        CRED_ID = "team5_prod_credentials"
                     } else if (params.ENVIRONMENT == 'dev') {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-dev"
-                        env.HOST_PORT = "8092"
-                        env.DB_HOST = "team_4_dev_postgres"
-                        env.DB_NAME = "team_4_db"
-                        CRED_ID = "team4_dev_credentials"
+                        env.HOST_PORT = "8094"
+                        env.DB_HOST = "team_5_dev_postgres"
+                        env.DB_NAME = "team_5_db"
+                        CRED_ID = "team5_dev_credentials"
                     } else {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-build"
                         env.HOST_PORT = "none"
-                        env.DB_HOST = "team_4_dev_postgres"
-                        env.DB_NAME = "team_4_db"
-                        CRED_ID = "team4_dev_credentials"
+                        env.DB_HOST = "team_5_dev_postgres"
+                        env.DB_NAME = "team_5_db"
+                        CRED_ID = "team5_dev_credentials"
                     }
 
-                    env.DB_URL = "jdbc:postgresql://${env.DB_HOST}:5432/${env.DB_NAME}"
+                    env.DB_URL = "jdbc:postgresql://${env.DB_HOST}:5450/${env.DB_NAME}"
 
                     echo """
                     🌿 Branch: ${env.BRANCH_NAME}
