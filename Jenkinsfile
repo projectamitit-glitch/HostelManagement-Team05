@@ -19,7 +19,7 @@ pipeline {
 
     environment {
         PROJECT = "team5"
-        APP_PORT = "8485"
+        APP_PORT = "8085"
     }
 
     stages {
@@ -220,4 +220,4 @@ pipeline {
             echo "📦 Pipeline finished execution."
         }
     }
-}
+} 
