@@ -18,7 +18,7 @@ RUN apt-get update -qq && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Copy the jar file from builder stage
-COPY --from=builder /app/target/team2project-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder /app/target/team5project-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose port
 EXPOSE 8085
