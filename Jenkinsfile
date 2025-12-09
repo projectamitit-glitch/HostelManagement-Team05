@@ -200,7 +200,7 @@ pipeline {
                     } else {
                         echo """
                         🎉 Successfully deployed '${env.BRANCH_NAME}' to ${params.ENVIRONMENT}
-                        🌍 URL: http://amitit.online:${HOST_PORT}
+                        🌍 URL: http://168.220.248.40/:${HOST_PORT}
                         """
                     }
                 }
