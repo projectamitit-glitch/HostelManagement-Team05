@@ -32,7 +32,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: "*/${env.BRANCH_NAME}"]],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/projectamitit-glitch/HostelManagement-Team05',
+                        url: 'https://github.com/projectamitit-glitch/HostelManagement-Team04',
                         credentialsId: 'team_5_repo_cred'   // 🔥 MUST HAVE CHANGE
                     ]]
                 ])
