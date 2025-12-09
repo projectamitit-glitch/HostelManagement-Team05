@@ -51,15 +51,9 @@ pipeline {
                         env.DB_HOST = "team_5_prod_postgres"
                         env.DB_NAME = "team_5_prod_db"
                         CRED_ID = "team5_prod_credentials"
-                    } else if (params.ENVIRONMENT == 'dev') {
+                    } else (params.ENVIRONMENT == 'dev') {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-dev"
                         env.HOST_PORT = "8094"
-                        env.DB_HOST = "team_5_dev_postgres"
-                        env.DB_NAME = "team_5_db"
-                        CRED_ID = "team5_dev_credentials"
-                    } else {
-                        env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-build"
-                        env.HOST_PORT = "none"
                         env.DB_HOST = "team_5_dev_postgres"
                         env.DB_NAME = "team_5_db"
                         CRED_ID = "team5_dev_credentials"
