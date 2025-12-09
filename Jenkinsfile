@@ -19,7 +19,7 @@ pipeline {
 
     environment {
         PROJECT = "team5"
-        APP_PORT = "8485"
+        APP_PORT = "8085"
     }
 
     stages {
@@ -32,7 +32,7 @@ pipeline {
                     $class: 'GitSCM',
                     branches: [[name: "*/${env.BRANCH_NAME}"]],
                     userRemoteConfigs: [[
-                        url: 'https://github.com/projectamitit-glitch/HostelManagement-Team05',
+                        url: 'https://github.com/projectamitit-glitch/HostelManagement-Team04',
                         credentialsId: 'team_5_repo_cred'   // 🔥 MUST HAVE CHANGE
                     ]]
                 ])
@@ -46,12 +46,20 @@ pipeline {
                     env.IMAGE_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-app"
 
                     if (params.ENVIRONMENT == 'prod') {
+                        env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-prod"
                         env.HOST_PORT = "8093"
                         env.DB_HOST = "team_5_prod_postgres"
                         env.DB_NAME = "team_5_prod_db"
                         CRED_ID = "team5_prod_credentials"
-                    } else {
+                    } else if (params.ENVIRONMENT == 'dev') {
+                        env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-dev"
                         env.HOST_PORT = "8094"
+                        env.DB_HOST = "team_5_dev_postgres"
+                        env.DB_NAME = "team_5_db"
+                        CRED_ID = "team5_dev_credentials"
+                    } else {
+                        env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-build"
+                        env.HOST_PORT = "none"
                         env.DB_HOST = "team_5_dev_postgres"
                         env.DB_NAME = "team_5_db"
                         CRED_ID = "team5_dev_credentials"
@@ -192,7 +200,7 @@ pipeline {
                     } else {
                         echo """
                         🎉 Successfully deployed '${env.BRANCH_NAME}' to ${params.ENVIRONMENT}
-                        🌍 URL: http://168.220.248.40/:${HOST_PORT}
+                        🌍 URL: http://168.220.248.40:${HOST_PORT}
                         """
                     }
                 }
