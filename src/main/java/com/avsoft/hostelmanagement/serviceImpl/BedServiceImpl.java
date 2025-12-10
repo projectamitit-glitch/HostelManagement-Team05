@@ -2,6 +2,7 @@ package com.avsoft.hostelmanagement.serviceImpl;
 
 import java.util.List;
 
+import com.avsoft.hostelmanagement.dto.VacantBedDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -88,4 +89,11 @@ public class BedServiceImpl implements BedService{
 		
 	}
 
-}
+    @Override
+    public List<VacantBedDto> getVacantBedDetails(Long hostel_id, int sharing) {
+        List<VacantBedDto> a=bedRepository.findVacantBeds(hostel_id,sharing);
+        System.out.println(a);
+        return a;
+    }
+    }
+

@@ -3,6 +3,7 @@ package com.avsoft.hostelmanagement.service;
 import java.util.List;
 
 import com.avsoft.hostelmanagement.dto.BedDto;
+import com.avsoft.hostelmanagement.dto.VacantBedDto;
 import com.avsoft.hostelmanagement.entity.Bed;
 
 public interface BedService {
@@ -17,5 +18,7 @@ public interface BedService {
     void deleteBed(Long id);
 
     void deleteAllBeds();
+
+    List<VacantBedDto> getVacantBedDetails(Long hostel_id,int sharing);
 
 }

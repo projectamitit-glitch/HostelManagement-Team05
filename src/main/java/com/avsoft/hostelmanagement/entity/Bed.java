@@ -29,7 +29,7 @@ public class Bed {
 
 	private String price;
 	private int sharing;
-
+    private Long deposit;
 	private boolean booked;
 	private LocalDate bookedFrom;
 	private LocalDate bookedTo;
