@@ -1,5 +1,7 @@
 package com.avsoft.hostelmanagement.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +20,11 @@ public class RoomDto {
     private Double pricePerBed;
     private Boolean attachedBathroom;
     private Boolean balcony;
+    private int sharing;
 
     // We only need the ID to link it, not the whole Floor object
     private Long floorId;
+    
+    private List<BedDto> beds;
+    
 }

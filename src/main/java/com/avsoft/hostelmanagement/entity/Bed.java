@@ -27,7 +27,7 @@ public class Bed {
 	private String bedNo;
 	private String status;
 
-	private String price;
+	private double price;
 	private int sharing;
 
 	private boolean booked;
@@ -37,4 +37,5 @@ public class Bed {
 	@ManyToOne
 	@JoinColumn(name = "room_id")
 	private Room room;
+	
 }

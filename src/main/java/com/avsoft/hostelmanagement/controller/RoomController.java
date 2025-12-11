@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.avsoft.hostelmanagement.dto.BuildingDto;
@@ -37,6 +38,16 @@ public class RoomController {
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_CREATED_SUCCESS,createdRoomDto),HttpStatus.CREATED);
 		
 	}
+	
+	@PostMapping("/save-list")
+	public ResponseEntity<ApiResponse<List<RoomDto>>> saveRooms(@RequestBody List<RoomDto> roomDtos) {
+
+	    roomService.saveRooms(roomDtos);
+
+	    return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_CREATED_SUCCESS, roomDtos), HttpStatus.OK);
+
+	}
+
 	
 	@GetMapping("/room/{id}")
 	public ResponseEntity<ApiResponse<RoomDto>> getRommById(@PathVariable Long id){
