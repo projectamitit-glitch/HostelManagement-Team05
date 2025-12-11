@@ -17,5 +17,10 @@ public interface BedService {
     void deleteBed(Long id);
 
     void deleteAllBeds();
+    
+    List<Integer> getDistinctSharingByRoomId(Long roomId);
+
+    List<Integer> getAllDistinctSharing();
+
 
 }

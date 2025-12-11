@@ -87,5 +87,18 @@ public class BedServiceImpl implements BedService{
 		  bedRepository.deleteAll();
 		
 	}
+	 @Override
+	    public List<Integer> getDistinctSharingByRoomId(Long roomId) {
+	        return bedRepository.findDistinctSharingByRoomId(roomId);
+	    }
+
+	    @Override
+	    public List<Integer> getAllDistinctSharing() {
+	        return bedRepository.findAllDistinctSharing();
+	    }
+
+
+
+	
 
 }

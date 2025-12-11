@@ -1,6 +1,7 @@
 package com.avsoft.hostelmanagement.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,4 +66,19 @@ public class BedController {
 
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BED_DELETE_ALL_SUCCESS, null), HttpStatus.OK);
 	}
+	
+	 @GetMapping("/distinct-sharing/{roomId}")
+	    public ResponseEntity<List<Integer>> getDistinctSharingByRoomId(@PathVariable Long roomId) {
+	        return ResponseEntity.of(
+	                Optional.ofNullable(bedService.getDistinctSharingByRoomId(roomId))
+	        );
+	    }
+
+	    
+	    @GetMapping("/distinct-sharing")
+	    public ResponseEntity<List<Integer>> getAllDistinctSharing() {
+	        return ResponseEntity.of(
+	                Optional.ofNullable(bedService.getAllDistinctSharing())
+			);
+	    }
 }
