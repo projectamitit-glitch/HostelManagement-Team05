@@ -18,7 +18,6 @@ public interface BedService {
 
     void deleteAllBeds();
     
-    List<Integer> getDistinctSharingByRoomId(Long roomId);
 
     List<Integer> getAllDistinctSharing();
 
