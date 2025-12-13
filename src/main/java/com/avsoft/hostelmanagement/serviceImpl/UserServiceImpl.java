@@ -8,6 +8,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.avsoft.hostelmanagement.dto.ForgetUserDto;
 import com.avsoft.hostelmanagement.dto.UserSignupDto;
 import com.avsoft.hostelmanagement.dto.UserUpdateDto;
 import com.avsoft.hostelmanagement.entity.User;
@@ -199,5 +200,29 @@ public class UserServiceImpl implements UserService {
 
 		    return "User updated successfully!";
 		}
+
+
+	@Override
+	public String retriveEmail(ForgetUserDto dto) {
+		if(dto.getMobileNo() != null && dto.getMobileNo() != 0) {
+			Optional<User> userOp = userRepo.findByFullNameAndMobileNo(dto.getFullName(), dto.getMobileNo());
+			if (userOp.isPresent()) {
+                return "Account Found! Your registered email is: " + userOp.get().getEmail();
+            } else {
+                return "No account found with this Name and Mobile Number.";
+            }
+		}
+		
+		List<User> users = userRepo.findByFullName(dto.getFullName());
+		if (users.isEmpty()) {
+            return "No user found with the name: " + dto.getFullName();
+        }else if (users.size() == 1) {
+            return "Account Found! Your registered email is: " + users.get(0).getEmail();
+        } 
+        else {
+            return "Multiple users found with the name '" + dto.getFullName() + 
+                   "'. Please provide your Mobile Number to identify your account.";
+        }
+	}
 	
 }

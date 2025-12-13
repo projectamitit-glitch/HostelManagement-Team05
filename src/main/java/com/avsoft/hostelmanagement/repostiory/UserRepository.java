@@ -1,5 +1,6 @@
 package com.avsoft.hostelmanagement.repostiory;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,8 @@ import com.avsoft.hostelmanagement.entity.User;
 
 	   
 	    Optional<User> findByUserNameAndPassword(String userName, String password);
+	    
+	    List<User> findByFullName(String fullName);
+
+	    Optional<User> findByFullNameAndMobileNo(String fullName, long mobileNo);
 	}

@@ -1,7 +1,10 @@
 package com.avsoft.hostelmanagement.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.avsoft.hostelmanagement.dto.ForgetUserDto;
 import com.avsoft.hostelmanagement.dto.OtpVerificationDto;
 import com.avsoft.hostelmanagement.dto.UserSignupDto;
 import com.avsoft.hostelmanagement.dto.UserUpdateDto;
 import com.avsoft.hostelmanagement.entity.User;
+import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.UserService;
 
 @RestController
@@ -76,8 +81,15 @@ public class UserController {
 		return ResponseEntity.ok(msg);
 	}
 	
-	@PostMapping("/forget")
-	public ResponseEntity<String> forgetuser(){
-		return ResponseEntity.ok("Working on this feature");
+	@GetMapping
+	public ResponseEntity<ApiResponse<User>> getAllUsers(){
+		List<User> users = service.getAllUsers();
+		return new ResponseEntity(new ApiResponse<>("Fetched all users successfully...!", users), HttpStatus.OK);
+	}
+	
+	@PostMapping("/forget-email")
+	public ResponseEntity<String> forgetUserEmail(@RequestBody ForgetUserDto dto){
+		String response = service.retriveEmail(dto);
+		return ResponseEntity.ok(response);
 	}
 }

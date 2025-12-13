@@ -27,7 +27,7 @@ public class OrganizationController {
 	@Autowired
 	OrganizationService organizationService;
 	
-	@PostMapping("/org")
+	@PostMapping
 	public ResponseEntity<ApiResponse<Organization>> saveOrganization(@RequestBody OrganizationDto dto){
 	    Organization saved = organizationService.saveOrganization(dto);
 	    return new ResponseEntity<>(
@@ -36,7 +36,7 @@ public class OrganizationController {
 	    );
 	}
 
-	@GetMapping("/org/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<ApiResponse<Organization>> getOrganizationById(@PathVariable Long id){
 	    Organization org = organizationService.getOrganizationById(id);
 	    return new ResponseEntity<>(
@@ -45,7 +45,7 @@ public class OrganizationController {
 	    );
 	}
 
-	@GetMapping("/org")
+	@GetMapping
 	public ResponseEntity<ApiResponse<List<Organization>>> getAllOrganization(){
 	    List<Organization> list = organizationService.getAllOrganizations();
 	    return new ResponseEntity<>(
@@ -54,7 +54,7 @@ public class OrganizationController {
 	    );
 	}
 
-	@DeleteMapping("/org/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<ApiResponse<String>> deleteOrganization(@PathVariable Long id){
 	    organizationService.deleteOrganization(id);
 	    return new ResponseEntity<>(
