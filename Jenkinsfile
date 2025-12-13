@@ -48,13 +48,13 @@ pipeline {
                     if (params.ENVIRONMENT == 'prod') {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-prod"
                         env.HOST_PORT = "8093"
-                        env.DB_HOST = "team_5_prod_postgres"
-                        env.DB_NAME = "team_5_prod_db"
-                        CRED_ID = "team5_prod_credentials"
+                        env.DB_HOST = "team_5_dev_5_postgres"
+                        env.DB_NAME = "team_5_db"
+                        CRED_ID = "team5_dev_credentials"
                     } else if (params.ENVIRONMENT == 'dev') {
                         env.CONTAINER_NAME = "${PROJECT}-${env.SAFE_BRANCH}-springboot-dev"
                         env.HOST_PORT = "8094"
-                        env.DB_HOST = "team_5_dev_postgres"
+                        env.DB_HOST = "team_5_dev_5_postgres"
                         env.DB_NAME = "team_5_db"
                         CRED_ID = "team5_dev_credentials"
                     } else {
