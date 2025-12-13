@@ -75,4 +75,9 @@ public class UserController {
 		String msg = service.resendOtp(dto.getEmail());
 		return ResponseEntity.ok(msg);
 	}
+	
+	@PostMapping("/forget")
+	public ResponseEntity<String> forgetuser(){
+		return ResponseEntity.ok("Working on this feature");
+	}
 }
