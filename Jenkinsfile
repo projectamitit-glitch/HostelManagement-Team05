@@ -65,7 +65,7 @@ pipeline {
                         CRED_ID = "team5_dev_credentials"
                     }
 
-                    env.DB_URL = "jdbc:postgresql://${env.DB_HOST}:5450/${env.DB_NAME}"
+                    env.DB_URL = "jdbc:postgresql://${env.DB_HOST}:5432/${env.DB_NAME}"
 
                     echo """
                     🌿 Branch: ${env.BRANCH_NAME}
