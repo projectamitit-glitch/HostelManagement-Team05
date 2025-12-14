@@ -10,4 +10,6 @@ import com.avsoft.hostelmanagement.entity.Room;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long>{
 	List<Room> findByFloorId(Long floorId);
+	
+	public  int countByFloor_Id(Long floorId);
 }

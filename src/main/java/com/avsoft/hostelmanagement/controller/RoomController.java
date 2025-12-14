@@ -25,46 +25,48 @@ import com.avsoft.hostelmanagement.util.MessageConstant;
 @RestController
 @RequestMapping("/rooms")
 public class RoomController {
-	
-	@Autowired 
+
+	@Autowired
 	RoomService roomService;
-	
+
 	@PostMapping("/room")
-	public ResponseEntity<ApiResponse<RoomDto>> createRoom(@RequestBody RoomDto roomDto){
-		
+	public ResponseEntity<ApiResponse<RoomDto>> createRoom(@RequestBody RoomDto roomDto) {
+
 		RoomDto createdRoomDto = roomService.createRoom(roomDto);
-		
-		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_CREATED_SUCCESS,createdRoomDto),HttpStatus.CREATED);
-		
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_CREATED_SUCCESS, createdRoomDto),
+				HttpStatus.CREATED);
+
 	}
-	
+
 	@GetMapping("/room/{id}")
-	public ResponseEntity<ApiResponse<RoomDto>> getRommById(@PathVariable Long id){
-		
+	public ResponseEntity<ApiResponse<RoomDto>> getRommById(@PathVariable Long id) {
+
 		RoomDto roomDto = roomService.getRoomById(id);
-		
-		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_FETCH_SUCCESS,roomDto),HttpStatus.OK);
-		
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_FETCH_SUCCESS, roomDto), HttpStatus.OK);
+
 	}
-	
+
 	@GetMapping("/room/{floorId}")
-	public ResponseEntity<ApiResponse<List<RoomDto>>> getRoomsByFloor(@PathVariable Long id){
-		
+	public ResponseEntity<ApiResponse<List<RoomDto>>> getRoomsByFloor(@PathVariable Long id) {
+
 		List<RoomDto> listRooms = roomService.getRoomsByFloor(id);
-		
-		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_LIST_FETCH_SUCCESS,listRooms),HttpStatus.OK);
-		
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_LIST_FETCH_SUCCESS, listRooms),
+				HttpStatus.OK);
+
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<ApiResponse<RoomDto>> updateRoom(@RequestBody RoomDto dto, @PathVariable long id){
-		
+	public ResponseEntity<ApiResponse<RoomDto>> updateRoom(@RequestBody RoomDto dto, @PathVariable long id) {
+
 		RoomDto updatedRoom = roomService.updateRoom(id, dto);
-		
-		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_UPDATE_SUCCESS,updatedRoom),HttpStatus.OK);
-		
+
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_UPDATE_SUCCESS, updatedRoom), HttpStatus.OK);
+
 	}
-	
+
 	@DeleteMapping("/{roomId}")
 	public ResponseEntity<ApiResponse<String>> deleteRoom(@PathVariable long id){
 		
@@ -72,5 +74,15 @@ public class RoomController {
 		
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.ROOM_DELETE_SUCCESS,null),HttpStatus.OK);
 		
+	}
+		
+		// API to get & update room count for a floor
+	@GetMapping("count/{floorId}") //
+	public ResponseEntity<Integer> getRoomCount(@PathVariable Long floorId) {
+
+		int updatedCount = roomService.getRoomCountByFloorId(floorId);
+
+		return ResponseEntity.ok(updatedCount);
+
 	}
 }

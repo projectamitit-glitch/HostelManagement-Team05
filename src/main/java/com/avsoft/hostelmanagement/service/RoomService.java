@@ -11,4 +11,6 @@ public interface RoomService {
     List<RoomDto> getRoomsByFloor(Long floorId);
     RoomDto updateRoom(Long id, RoomDto dto);
     void deleteRoom(Long id);
+    
+    public int getRoomCountByFloorId(Long floorId);
 }

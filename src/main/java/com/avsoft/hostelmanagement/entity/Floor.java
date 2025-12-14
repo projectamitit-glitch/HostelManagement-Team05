@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,7 +30,12 @@ public class Floor {
     private int noOfRooms;
     private String floorType; 
     private String status;
+    
+    private int roomCount;
 
+ 
+    
+    
     @ManyToOne
     @JoinColumn(name = "building_id")
     @JsonIgnore

@@ -114,4 +114,26 @@ public class RoomServiceImpl implements RoomService {
         return dto;
     }
 
+    
+    
+    @Override
+    public int getRoomCountByFloorId(Long floorId) {
+
+        Floor floor = floorRepository.findById(floorId).orElse(null);
+
+        if (floor == null) {
+            throw new FloorServiceException(
+                    "Floor not found with id: " + floorId,
+                    
+                    HttpStatus.NOT_FOUND
+            );
+        }
+
+        int totalRooms = roomRepository.countByFloor_Id(floorId);
+
+        floor.setRoomCount(totalRooms);
+        floorRepository.save(floor);
+
+        return totalRooms;
+    }
 }
