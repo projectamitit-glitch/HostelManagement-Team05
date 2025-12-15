@@ -1,6 +1,5 @@
 package com.avsoft.hostelmanagement.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,59 +11,53 @@ import com.avsoft.hostelmanagement.constants.MessageConstant;
 import com.avsoft.hostelmanagement.dto.BuildingDto;
 import com.avsoft.hostelmanagement.entity.Building;
 import com.avsoft.hostelmanagement.response.ApiResponse;
+import com.avsoft.hostelmanagement.response.PaginationResponse;
 import com.avsoft.hostelmanagement.service.BuildingService;
 
 @RestController
 @RequestMapping("/building")
 public class BuildingController {
 
-    @Autowired
-    BuildingService buildingService;
+	@Autowired
+	BuildingService buildingService;
 
-    @PostMapping("/save/{hostelId}")
-    public ResponseEntity<ApiResponse<Building>> saveBuilding(@PathVariable Long hostelId, @RequestBody BuildingDto dto){
+	@PostMapping("/save/{hostelId}")
+	public ResponseEntity<ApiResponse<Building>> saveBuilding(@PathVariable Long hostelId,
+			@RequestBody BuildingDto dto) {
 
-        Building saved = buildingService.saveBuilding(hostelId, dto);
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_CREATED_SUCCESS, saved),
-                HttpStatus.CREATED
-        );
-    }
+		Building saved = buildingService.saveBuilding(hostelId, dto);
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BUILDING_CREATED_SUCCESS, saved),
+				HttpStatus.CREATED);
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<Building>> getBuilding(@PathVariable Long id) {
-        Building b = buildingService.getBuildingById(id);
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_FETCH_SUCCESS, b),
-                HttpStatus.OK
-        );
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<ApiResponse<Building>> getBuilding(@PathVariable Long id) {
+		Building b = buildingService.getBuildingById(id);
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BUILDING_FETCH_SUCCESS, b), HttpStatus.OK);
+	}
 
-    @GetMapping("/all")
-    public ResponseEntity<ApiResponse<List<Building>>> getAll() {
-        List<Building> list = buildingService.getAllBuilding();
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_LIST_FETCH_SUCCESS, list),
-                HttpStatus.OK
-        );
-    }
+	@GetMapping("/all")
+	public ResponseEntity<ApiResponse<PaginationResponse<Building>>> getAllBeds(
+			@RequestParam(value = "pageNumber", defaultValue = "0") Integer pageNumber,
+			@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id) {
-        buildingService.deleteBuilding(id);
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_DELETE_SUCCESS, null),
-                HttpStatus.OK
-        );
-    }
+		PaginationResponse<Building> postResponse = buildingService.getAllBuilding(pageNumber, pageSize);
 
-    @DeleteMapping("/deleteAll")
-    public ResponseEntity<ApiResponse<String>> deleteAll() {
-        buildingService.deleteAllBuilding();
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_DELETE_ALL_SUCCESS, null),
-                HttpStatus.OK
-        );
-    }
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BUILDING_LIST_FETCH_SUCCESS, postResponse),
+				HttpStatus.OK);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id) {
+		buildingService.deleteBuilding(id);
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BUILDING_DELETE_SUCCESS, null), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/deleteAll")
+	public ResponseEntity<ApiResponse<String>> deleteAll() {
+		buildingService.deleteAllBuilding();
+		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BUILDING_DELETE_ALL_SUCCESS, null),
+				HttpStatus.OK);
+	}
 
 }

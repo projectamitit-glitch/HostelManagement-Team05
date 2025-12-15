@@ -36,5 +36,6 @@ public class Room {
     private Floor floor;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Bed> beds;
 }

@@ -4,16 +4,17 @@ import java.util.List;
 
 import com.avsoft.hostelmanagement.dto.FloorDto;
 import com.avsoft.hostelmanagement.dto.GetFloorDto;
+import com.avsoft.hostelmanagement.response.PaginationResponse;
 
 public interface FloorService {
-	
-    void addFloor(Long buildingId, FloorDto floorDto);
 
-    FloorDto getFloorById(Long id);
+	void addFloor(Long buildingId, FloorDto floorDto);
 
-    List<FloorDto> getFloorByBuildingId(Long buildingId);
+	FloorDto getFloorById(Long id);
 
-    List<FloorDto> getAllFloors();
+	List<FloorDto> getFloorByBuildingId(Long buildingId);
 
-    void deleteFloorById(Long floorId);
+	PaginationResponse getAllFloors(Integer pageNumber, Integer pageSize);
+
+	void deleteFloorById(Long floorId);
 }

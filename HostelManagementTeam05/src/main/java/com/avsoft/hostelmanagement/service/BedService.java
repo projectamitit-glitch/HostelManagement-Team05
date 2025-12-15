@@ -1,21 +1,18 @@
 package com.avsoft.hostelmanagement.service;
-
 import java.util.List;
-
 import com.avsoft.hostelmanagement.dto.BedDto;
 import com.avsoft.hostelmanagement.entity.Bed;
+import com.avsoft.hostelmanagement.response.PaginationResponse;
 
 public interface BedService {
-	
-	
+
     Bed saveBed(Long roomId, BedDto dto);
 
     Bed getBedById(Long id);
 
-    List<Bed> getAllBeds();
+    PaginationResponse getAllBeds(Integer pageNumber, Integer pageSize);
 
     void deleteBed(Long id);
 
     void deleteAllBeds();
-
 }
