@@ -72,7 +72,7 @@ public class FloorServiceImpl implements FloorService {
         dto.setNoOfRooms(floor.getNoOfRooms());
         dto.setFloorType(floor.getFloorType());
         dto.setStatus(floor.getStatus());
-
+		dto.setBuildingId(floor.getBuilding().getId());
         dto.setBuildingName(floor.getBuilding().getName());
         dto.setHostelName(floor.getBuilding().getHostel().getName());
         dto.setOrgName(floor.getBuilding().getHostel().getOrganization().getOrgName());
@@ -80,8 +80,6 @@ public class FloorServiceImpl implements FloorService {
         return dto;
     }
 
-    @Override
-    public List<FloorDto> getFloorByBuildingId(Long buildingId) {
 
         Building building = buildingRepo.findById(buildingId).orElseThrow(() ->
                 new FloorServiceException(
@@ -100,7 +98,7 @@ public class FloorServiceImpl implements FloorService {
             dto.setNoOfRooms(floor.getNoOfRooms());
             dto.setFloorType(floor.getFloorType());
             dto.setStatus(floor.getStatus());
-
+			dto.setBuildingId(floor.getBuilding().getId());
             dto.setBuildingName(building.getName());
             dto.setHostelName(building.getHostel().getName());
             dto.setOrgName(building.getHostel().getOrganization().getOrgName());
@@ -111,20 +109,10 @@ public class FloorServiceImpl implements FloorService {
         return dtoList;
     }
 
-    @Override
-    public List<FloorDto> getAllFloors() {
 
-        List<Floor> floors = floorRepo.findAll();
-        List<FloorDto> dtoList = new ArrayList<>();
 
-        for (Floor floor : floors) {
+		postResponse.setLastPage(pageFloor.isLast());
 
-            FloorDto dto = new FloorDto();
-            dto.setId(floor.getId());
-            dto.setFloorNo(floor.getFloorNo());
-            dto.setNoOfRooms(floor.getNoOfRooms());
-            dto.setFloorType(floor.getFloorType());
-            dto.setStatus(floor.getStatus());
 
             dto.setBuildingName(floor.getBuilding().getName());
             dto.setHostelName(floor.getBuilding().getHostel().getName());

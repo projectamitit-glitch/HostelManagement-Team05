@@ -46,12 +46,6 @@ public class OrganizationController {
 	}
 
 	@GetMapping("/org")
-	public ResponseEntity<ApiResponse<List<Organization>>> getAllOrganization(){
-	    List<Organization> list = organizationService.getAllOrganizations();
-	    return new ResponseEntity<>(
-	            new ApiResponse<>(MessageConstant.ORG_LIST_FETCH_SUCCESS, list),
-	            HttpStatus.OK
-	    );
 	}
 
 	@DeleteMapping("/org/{id}")

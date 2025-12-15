@@ -40,31 +40,5 @@ public class BuildingController {
         );
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<ApiResponse<List<Building>>> getAll() {
-        List<Building> list = buildingService.getAllBuilding();
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_LIST_FETCH_SUCCESS, list),
-                HttpStatus.OK
-        );
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<String>> deleteById(@PathVariable Long id) {
-        buildingService.deleteBuilding(id);
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_DELETE_SUCCESS, null),
-                HttpStatus.OK
-        );
-    }
-
-    @DeleteMapping("/deleteAll")
-    public ResponseEntity<ApiResponse<String>> deleteAll() {
-        buildingService.deleteAllBuilding();
-        return new ResponseEntity<>(
-                new ApiResponse<>(MessageConstant.BUILDING_DELETE_ALL_SUCCESS, null),
-                HttpStatus.OK
-        );
-    }
 
 }

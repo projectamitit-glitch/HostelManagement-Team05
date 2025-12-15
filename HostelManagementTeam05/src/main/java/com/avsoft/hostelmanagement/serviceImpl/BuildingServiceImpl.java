@@ -6,7 +6,6 @@ import org.hibernate.property.access.spi.PropertyAccessBuildingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import com.avsoft.hostelmanagement.dto.BuildingDto;
 import com.avsoft.hostelmanagement.entity.Building;
 import com.avsoft.hostelmanagement.entity.Hostel;
@@ -82,11 +81,6 @@ public class BuildingServiceImpl implements BuildingService{
 	
 
 	@Override
-	public List<Building> getAllBuilding() {
-		
-		log.info("Featching all buildings");
-		
-		return buildingRepository.findAll();
 	}
 
 	

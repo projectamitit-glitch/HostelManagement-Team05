@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
 import com.avsoft.hostelmanagement.dto.AddressDto;
 import com.avsoft.hostelmanagement.dto.HostelDto;
 import com.avsoft.hostelmanagement.entity.Address;
@@ -76,11 +75,6 @@ public class HostelServiceImpl implements HostelService {
 	}
 
 	@Override
-	public List<Hostel> getHostel() {
-		log.info("getting all haostel data!");
-		
-		
-		return hostelRepository.findAll();
 	}
 
 	@Override

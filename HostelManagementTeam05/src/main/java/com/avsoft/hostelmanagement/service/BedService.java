@@ -8,14 +8,14 @@ import com.avsoft.hostelmanagement.entity.Bed;
 public interface BedService {
 	
 	
-    Bed saveBed(Long roomId, BedDto dto);
+	Bed saveBed(Long roomId, BedDto dto);
 
-    Bed getBedById(Long id);
+	Bed getBedById(Long id);
 
-    List<Bed> getAllBeds();
+    PaginationResponse getAllBeds(Integer pageNumber, Integer pageSize);
 
-    void deleteBed(Long id);
+	void deleteBed(Long id);
 
-    void deleteAllBeds();
+	void deleteAllBeds();
 
 }

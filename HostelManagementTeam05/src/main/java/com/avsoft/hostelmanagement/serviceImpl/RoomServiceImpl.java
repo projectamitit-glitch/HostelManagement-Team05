@@ -1,6 +1,6 @@
 package com.avsoft.hostelmanagement.serviceImpl;
 
-import java.util.List;
+import java.util.List; 
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;

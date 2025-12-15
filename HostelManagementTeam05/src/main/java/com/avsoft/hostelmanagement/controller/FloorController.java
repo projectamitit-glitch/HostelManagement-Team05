@@ -29,7 +29,6 @@ public class FloorController {
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_CREATED_SUCCESS, null), HttpStatus.CREATED);
 	}
 
-	
 	@GetMapping("/{floorId}")
 	public ResponseEntity<ApiResponse<FloorDto>> getFloorById(@PathVariable Long floorId) {
 
@@ -38,8 +37,6 @@ public class FloorController {
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_FETCH_SUCCESS, dto), HttpStatus.OK);
 	}
 
-	
-	public ResponseEntity<ApiResponse<List<FloorDto>>> getAllFloors() {
 
 		List<FloorDto> floors = floorService.getAllFloors();
 

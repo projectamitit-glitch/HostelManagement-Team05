@@ -3,7 +3,7 @@ package com.avsoft.hostelmanagement.service;
 import java.util.List;
 
 import com.avsoft.hostelmanagement.dto.FloorDto;
-import com.avsoft.hostelmanagement.dto.GetFloorDto;
+import com.avsoft.hostelmanagement.response.PaginationResponse;
 
 public interface FloorService {
 	
@@ -13,7 +13,5 @@ public interface FloorService {
 
     List<FloorDto> getFloorByBuildingId(Long buildingId);
 
-    List<FloorDto> getAllFloors();
 
-    void deleteFloorById(Long floorId);
 }

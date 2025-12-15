@@ -1,6 +1,6 @@
 package com.avsoft.hostelmanagement.service;
 
-import java.util.List;
+import java.util.List; 
 
 import com.avsoft.hostelmanagement.dto.RoomDto;
 

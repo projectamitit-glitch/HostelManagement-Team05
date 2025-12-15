@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.avsoft.hostelmanagement.util.MessageConstant;
 import com.avsoft.hostelmanagement.dto.BedDto;
 import com.avsoft.hostelmanagement.entity.Bed;
+import com.avsoft.hostelmanagement.entity.Building;
 import com.avsoft.hostelmanagement.response.ApiResponse;
 import com.avsoft.hostelmanagement.service.BedService;
 
@@ -39,13 +40,6 @@ public class BedController {
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BED_FETCH_SUCCESS, bed), HttpStatus.OK);
 	}
 
-	
-	@GetMapping
-	public ResponseEntity<ApiResponse<List<Bed>>> getAllBeds() {
-
-		List<Bed> beds = bedService.getAllBeds();
-
-		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BED_LIST_FETCH_SUCCESS, beds), HttpStatus.OK);
 	}
 
 	
