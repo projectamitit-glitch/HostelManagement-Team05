@@ -8,7 +8,7 @@ public class HomeController {
     
     // Option 1: Serve static index.html
     @GetMapping("/")
-    public String home() {
+    public String index() {
         // Forward to static index.html
         return "forward:/index.html";
     }
