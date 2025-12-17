@@ -5,14 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-    
-    @GetMapping("/")
-    public String index() {
-        return "forward:/index.html";
-    }
-    
-    @GetMapping("/app")
-    public String app() {
-        return "index"; 
-    }
+
+	@GetMapping("/")
+	public String index() {
+		return "forward:/index.html";
+	}
+
+	@GetMapping("/app")
+	public String app() {
+		return "index";
+	}
+	
+	@GetMapping("/mahesh")
+	public String demo() {
+		return "Mahesh Pande";
+	}
 }
