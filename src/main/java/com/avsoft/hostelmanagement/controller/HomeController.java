@@ -8,8 +8,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String index() {
-		return "mahesh Sanjay Pande";
-		//		return "forward:/index.html";
+		return "forward:/index.html";
 	}
 
 	@GetMapping("/app")
