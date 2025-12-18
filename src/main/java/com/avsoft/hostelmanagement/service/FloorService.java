@@ -9,6 +9,8 @@ public interface FloorService {
 	
     void addFloor(Long buildingId, FloorDto floorDto);
 
+    List<FloorDto> saveFloorList(List<FloorDto> floorDtos);
+    
     FloorDto getFloorById(Long id);
 
     List<FloorDto> getFloorByBuildingId(Long buildingId);

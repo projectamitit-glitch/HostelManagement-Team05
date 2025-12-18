@@ -57,6 +57,52 @@ public class FloorServiceImpl implements FloorService {
     }
 
     @Override
+	public List<FloorDto> saveFloorList(List<FloorDto> floorDtos) {
+
+		List<Floor> floors = new ArrayList<>();
+
+		for (FloorDto dto : floorDtos) {
+
+			Building building = buildingRepo.findById(dto.getBuildingId())
+					.orElseThrow(() -> new FloorServiceException("Building ID not found: " + dto.getBuildingId(),
+							HttpStatus.NOT_FOUND));
+
+			Floor floor = new Floor();
+			floor.setFloorNo(dto.getFloorNo());
+			floor.setNoOfRooms(dto.getNoOfRooms());
+			floor.setFloorType(dto.getFloorType());
+			floor.setStatus(dto.getStatus());
+			floor.setBuilding(building);
+
+			floors.add(floor);
+		}
+
+		List<Floor> savedList = floorRepo.saveAll(floors);
+
+		List<FloorDto> responseList = new ArrayList<>();
+
+		for (Floor floor : savedList) {
+
+			FloorDto dto = new FloorDto();
+			dto.setId(floor.getId());
+			dto.setFloorNo(floor.getFloorNo());
+			dto.setNoOfRooms(floor.getNoOfRooms());
+			dto.setFloorType(floor.getFloorType());
+			dto.setStatus(floor.getStatus());
+
+			dto.setBuildingId(floor.getBuilding().getId());
+			dto.setBuildingName(floor.getBuilding().getName());
+			dto.setHostelName(floor.getBuilding().getHostel().getName());
+			dto.setOrgName(floor.getBuilding().getHostel().getOrganization().getOrgName());
+
+			responseList.add(dto);
+		}
+
+		return responseList;
+	}
+
+    
+    @Override
     public FloorDto getFloorById(Long id) {
 
         Floor floor = floorRepo.findById(id).orElseThrow(() ->
