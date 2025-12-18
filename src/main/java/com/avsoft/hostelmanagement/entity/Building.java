@@ -44,6 +44,7 @@ public class Building {
     private Hostel hostel;
 
     @OneToMany(mappedBy = "building", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Floor> floorsList;
 
 }

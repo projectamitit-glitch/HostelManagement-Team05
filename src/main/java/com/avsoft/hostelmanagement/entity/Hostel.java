@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,18 +49,22 @@ public class Hostel {
 	private LocalDate updatedAt;
 
 	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Building> buildings;
 	
 	
 	@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Image> images = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
+	@JsonIgnore
 	private Organization organization;
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
+	@JsonIgnore
 	private Address addresss;
 
 }
