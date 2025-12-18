@@ -31,6 +31,7 @@ public class HomeController {
     }
     
     @GetMapping("/shiv")
+    @ResponseBody
     public String shiv() {
     	return "shiv";
     }
