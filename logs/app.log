@@ -36,3 +36,12 @@
 2025-12-17 12:35:04.919 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8093 (http) with context path '/'
 2025-12-17 12:35:05.149 INFO  c.a.h.HostelManagementTeam05Application - Started HostelManagementTeam05Application in 75.164 seconds (process running for 71646.981)
 2025-12-17 12:35:05.410 INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-17 15:08:40.263 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=1h9m50s358ms28µs701ns).
+2025-12-17 15:09:21.399 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=46s806ms789µs300ns).
+2025-12-17 15:39:24.848 WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=29m17s461ms4µs800ns).
+2025-12-17 15:41:52.909 INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 4 class path changes (0 additions, 4 deletions, 0 modifications)
+2025-12-17 15:41:56.822 INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8093"]
+2025-12-17 15:42:21.562 WARN  org.apache.tomcat.util.net.Acceptor - The acceptor thread [http-nio-8093-Acceptor] did not stop cleanly
+2025-12-17 15:42:35.961 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-17 15:42:43.035 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-12-17 15:42:46.470 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
