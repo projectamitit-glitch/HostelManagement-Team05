@@ -22,10 +22,16 @@ public class HomeController {
     	return "Uday";
     }
     
+    
     // ✅ Simple Hello API
     @GetMapping("/hello")
     @ResponseBody
     public String hello() {
         return "Hello";
+    }
+    
+    @GetMapping("/shiv")
+    public String shiv() {
+    	return "shiv";
     }
 }
