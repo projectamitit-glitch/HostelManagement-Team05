@@ -8,6 +8,7 @@ public class BedDto {
 	private Long id;
     private String bedNo;
     private String status;
-    private String price;
+    private double price;
     private int sharing; 
+    
 }
