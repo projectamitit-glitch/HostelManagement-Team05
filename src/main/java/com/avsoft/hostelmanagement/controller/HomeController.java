@@ -17,15 +17,16 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/uday")
-    public String printMyName() {
-    	return "Uday";
-    }
+	/*
+	 * @GetMapping("/uday") 
+	 * public String printMyName() { 
+	 * return "Uday"; }
+	 */
     
     // ✅ Simple Hello API
-    @GetMapping("/hello")
+    @GetMapping("/tejas")
     @ResponseBody
-    public String hello() {
-        return "Hello";
+    public String printMyName() {
+        return "Tejas";
     }
 }
