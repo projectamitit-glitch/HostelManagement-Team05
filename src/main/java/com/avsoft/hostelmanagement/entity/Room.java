@@ -26,10 +26,6 @@ public class Room {
 
     private Double pricePerBed;
 
-    private Boolean attachedBathroom;
-
-    private Boolean balcony;
-
     @ManyToOne(fetch = FetchType.LAZY) 
     @JoinColumn(name = "floor_id")
     @JsonIgnore

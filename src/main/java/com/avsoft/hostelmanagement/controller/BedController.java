@@ -2,6 +2,7 @@ package com.avsoft.hostelmanagement.controller;
 
 import java.util.List;
 
+import com.avsoft.hostelmanagement.dto.VacantBedDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,4 +66,13 @@ public class BedController {
 
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BED_DELETE_ALL_SUCCESS, null), HttpStatus.OK);
 	}
+
+
+    @GetMapping("/{hostel_id}/vacant-beds")
+    public List<VacantBedDto> getVacantBeds(@PathVariable Long hostel_id, @RequestParam int sharing){
+        System.out.println("Sharing"+sharing);
+        return bedService.getVaccantBedDetails(hostel_id, sharing);
+
+    }
+
 }

@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +28,7 @@ public class Bed {
 
 	private double price;
 	private int sharing;
+    private Long deposit;
 
 	private boolean booked;
 	private LocalDate bookedFrom;
