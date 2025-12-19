@@ -2,6 +2,8 @@ package com.avsoft.hostelmanagement.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,6 +38,7 @@ public class Bed {
 
 	@ManyToOne
 	@JoinColumn(name = "room_id")
+	@JsonIgnore
 	private Room room;
 	
 }
