@@ -29,7 +29,7 @@ public class FloorController {
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.FLOOR_CREATED_SUCCESS, null), HttpStatus.CREATED);
 	}
 
-	@PostMapping("/saveList")
+	@PostMapping
 	public ResponseEntity<ApiResponse<List<FloorDto>>> saveFloorList(@RequestBody List<FloorDto> floorDtos) {
 
 		List<FloorDto> savedFloors = floorService.saveFloorList(floorDtos);
