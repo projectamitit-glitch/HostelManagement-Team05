@@ -23,9 +23,9 @@ public class HomeController {
     }
     
     // ✅ Simple Hello API
-    @GetMapping("/hello")
+    @GetMapping("/pratik")
     @ResponseBody
     public String hello() {
-        return "Hello";
+        return "pratik";
     }
 }
