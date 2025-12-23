@@ -45,7 +45,7 @@ public class HostelServiceImpl implements HostelService {
 
 		Hostel hostel = new Hostel();
 		hostel.setName(hostelDto.getName());
-//		hostel.setAddress(hostelDto.getAddress());
+ 		hostel.setAddress(hostelDto.getAddress());
 		hostel.setCapacity(hostelDto.getCapacity());
 		hostel.setContactNo(hostelDto.getContactNo());
 		hostel.setGenderType(hostelDto.getGenderType());
@@ -61,7 +61,7 @@ public class HostelServiceImpl implements HostelService {
             addressEntity.setState(hostelDto.getAddressDetails().getState());
             addressEntity.setCountry(hostelDto.getAddressDetails().getCountry());
 
-            // Link Address to Hostel
+            
             hostel.setAddresss(addressEntity); 
             
             
@@ -161,10 +161,46 @@ public class HostelServiceImpl implements HostelService {
                 dto.setAddressDetails(addrDto);
             }
 
-            // Add to list
+           
             hostelDtos.add(dto);
         }
 
         return hostelDtos;
     }
+	
+	
+
+	   
+
+	@Override
+	public Hostel addFloorCount(Long hostelId, int floorCount) {
+
+	    Hostel hostel = hostelRepository.findById(hostelId)
+	            .orElseThrow(() ->
+	                new HostelServiceExceptionHandler(
+	                    "Hostel not found with id: " + hostelId,
+	                    HttpStatus.NOT_FOUND
+	                )
+	            );
+
+	    hostel.setFloorCount(floorCount);
+	    return hostelRepository.save(hostel);
+	}
+
+	@Override
+	public int getFloorCount(Long hostelId) {
+
+	    Hostel hostel = hostelRepository.findById(hostelId)
+	            .orElseThrow(() ->
+	                new HostelServiceExceptionHandler(
+	                    "Hostel not found with id: " + hostelId,
+	                    HttpStatus.NOT_FOUND
+	                )
+	            );
+
+	    return hostel.getFloorCount();
+	}
 }
+
+
+

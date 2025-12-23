@@ -2,6 +2,7 @@ package com.avsoft.hostelmanagement.service;
 
 import java.util.List;
 
+import com.avsoft.hostelmanagement.dto.FloorCountDto;
 import com.avsoft.hostelmanagement.dto.FloorDto;
 import com.avsoft.hostelmanagement.dto.GetFloorDto;
 
@@ -16,4 +17,6 @@ public interface FloorService {
     List<FloorDto> getAllFloors();
 
     void deleteFloorById(Long floorId);
+    
+    FloorCountDto getFloorCountByBuildingId(Long buildingId);
 }

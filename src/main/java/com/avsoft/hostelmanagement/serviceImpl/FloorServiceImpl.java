@@ -7,19 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.avsoft.hostelmanagement.dto.FloorCountDto;
 import com.avsoft.hostelmanagement.dto.FloorDto;
-import com.avsoft.hostelmanagement.dto.GetFloorDto;
+
 import com.avsoft.hostelmanagement.entity.Building;
 import com.avsoft.hostelmanagement.entity.Floor;
 import com.avsoft.hostelmanagement.exceptionHandler.FloorServiceException;
 import com.avsoft.hostelmanagement.repostiory.BuildingRepository;
 import com.avsoft.hostelmanagement.repostiory.FloorRepository;
 import com.avsoft.hostelmanagement.service.FloorService;
-import jakarta.transaction.Transactional;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-
 @Slf4j
 public class FloorServiceImpl implements FloorService {
 
@@ -149,4 +149,26 @@ public class FloorServiceImpl implements FloorService {
 
         floorRepo.delete(floor);
     }
+        
+        
+       
+    @Override
+    public FloorCountDto getFloorCountByBuildingId(Long buildingId) {
+
+        Building building = buildingRepo.findById(buildingId).orElseThrow(() ->
+                new FloorServiceException(
+                        "Building ID not found: " + buildingId,
+                        HttpStatus.NOT_FOUND
+                )
+        );
+
+        int floorCount = building.getFloors(); // read from building table
+
+        return new FloorCountDto(buildingId, floorCount);
+    }
+
+
+
+
+
 }

@@ -89,4 +89,32 @@ public class HostelController {
         );
     }
 
+	   
+	    @PostMapping("/{hostelId}/floors")
+	    public ResponseEntity<String> addFloorCount(
+	            @PathVariable Long hostelId,
+	            @RequestParam int floorCount) {
+
+	        hostelService.addFloorCount(hostelId, floorCount);
+	        return ResponseEntity.ok("Floor count updated successfully");
+	    }
+
+	    
+	    @GetMapping("/{hostelId}/floors")
+	    public ResponseEntity<ApiResponse<Integer>> getFloorCount(
+	            @PathVariable Long hostelId) {
+
+	        int floorCount = hostelService.getFloorCount(hostelId);
+
+	        return new ResponseEntity<>(
+	                new ApiResponse<>(
+	                        "Floor count fetched successfully for hostel id " + hostelId,floorCount),
+	                HttpStatus.OK
+	        );
+	    }
 }
+	    
+
+
+
+
