@@ -65,4 +65,16 @@ public class BedController {
 
 		return new ResponseEntity<>(new ApiResponse<>(MessageConstant.BED_DELETE_ALL_SUCCESS, null), HttpStatus.OK);
 	}
-}
+	
+	@GetMapping("/distinct-sharing")
+	public ResponseEntity<List<Integer>> getAllDistinctSharing() {
+
+	    return ResponseEntity.ok(
+	            bedService.getAllDistinctSharing());
+	    
+	}
+
+    }
+	
+
+

@@ -88,4 +88,14 @@ public class BedServiceImpl implements BedService{
 		
 	}
 
+
+
+
+	@Override
+	public List<Integer> getAllDistinctSharing() {
+		
+		return bedRepository.findAllDistinctSharing();
+
+	}
+
 }

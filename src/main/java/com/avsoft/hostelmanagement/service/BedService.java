@@ -18,4 +18,5 @@ public interface BedService {
 
     void deleteAllBeds();
 
+    List<Integer> getAllDistinctSharing();
 }
