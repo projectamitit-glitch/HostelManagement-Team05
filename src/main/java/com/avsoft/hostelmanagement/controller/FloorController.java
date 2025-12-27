@@ -79,11 +79,15 @@ public class FloorController {
 
    
     @GetMapping("/count/{buildingId}")
-    public ResponseEntity<FloorCountDto> getFloorCountByBuildingId(
+    public ResponseEntity<ApiResponse<FloorCountDto>> getFloorCountByBuildingId(
             @PathVariable Long buildingId) {
 
-        return ResponseEntity.ok(
-                floorService.getFloorCountByBuildingId(buildingId)
+        FloorCountDto floorCount = floorService.getFloorCountByBuildingId(buildingId);
+
+        return new ResponseEntity<>(
+                new ApiResponse<>(MessageConstant.FLOOR_COUNT_FETCH_SUCCESS, floorCount),
+                HttpStatus.OK
         );
     }
+
 }
