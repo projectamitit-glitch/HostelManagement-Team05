@@ -26,7 +26,7 @@
     </appender>
 
     
-    <logger name="com.demo.deutschebank.testproject" level="DEBUG" additivity="false">
+    <logger name="com.avsoft.hostelmanagement" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </logger>
