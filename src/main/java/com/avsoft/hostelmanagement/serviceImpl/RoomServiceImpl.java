@@ -60,8 +60,7 @@ public class RoomServiceImpl implements RoomService {
 	        room.setType(dto.getType());
 	        room.setStatus(dto.getStatus());
 	        room.setPricePerBed(dto.getPricePerBed());
-	        room.setAttachedBathroom(dto.getAttachedBathroom());
-	        room.setBalcony(dto.getBalcony());
+
      
 	        Floor floor = floorRepository.findById(dto.getFloorId()).orElse(null);
 
@@ -97,7 +96,8 @@ public class RoomServiceImpl implements RoomService {
 	    
 	}
 
-	@Override
+
+    @Override
 	public RoomDto getRoomById(Long id) {
 		
 		Room room = roomRepository.findById(id).orElseThrow(() -> new RoomServiceException("Room not found with id: " + id,HttpStatus.NOT_FOUND));
@@ -133,8 +133,7 @@ public class RoomServiceImpl implements RoomService {
 		if(dto.getType() != null) existing.setType(dto.getType());
 		if(dto.getPricePerBed() !=null) existing.setPricePerBed(dto.getPricePerBed());
 		if(dto.getStatus() !=null) existing.setStatus(dto.getStatus());
-		if(dto.getAttachedBathroom() != null) existing.setAttachedBathroom(dto.getAttachedBathroom());
-		if(dto.getBalcony() !=null) existing.setBalcony(dto.getBalcony());
+
 		
 		Room updatedRoom = roomRepository.save(existing);
 		return mapToDto(updatedRoom);
