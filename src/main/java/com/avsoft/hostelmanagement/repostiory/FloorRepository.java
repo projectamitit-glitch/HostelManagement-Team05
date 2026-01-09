@@ -1,15 +1,19 @@
 package com.avsoft.hostelmanagement.repostiory;
-
-import java.util.List;
+import java.util.List;  
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.avsoft.hostelmanagement.dto.GetFloorDto;
+
 import com.avsoft.hostelmanagement.entity.Floor;
 
 
 
-public interface FloorRepository extends JpaRepository<Floor, Long>  {
+	public interface FloorRepository extends JpaRepository<Floor, Long> {
 
-	List<GetFloorDto> findByBuildingId(Long id);
-}
+	    long countByBuilding_Id(Long buildingId);
+	    
+	    List<Floor> findByBuilding_Id(Long buildingId);
+	}
+
+
+

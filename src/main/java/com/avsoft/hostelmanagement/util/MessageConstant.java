@@ -31,6 +31,7 @@ public class MessageConstant {
    public static final String FLOOR_LIST_FETCH_SUCCESS = "Floor list fetched successfully.";
    public static final String FLOOR_BY_BUILDING_FETCH_SUCCESS = "Floor list by building fetched successfully.";
    public static final String FLOOR_DELETE_SUCCESS = "Floor deleted successfully.";
+   public static final String FLOOR_COUNT_FETCH_SUCCESS = "Count fetched successfully.";
 
    // Room
    public static final String ROOM_CREATED_SUCCESS = "Room created successfully.";

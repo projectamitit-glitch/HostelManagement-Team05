@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,11 +27,13 @@ public class Floor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "floor_no")
     private int floorNo;
+    @Column(name = "no_of_rooms")
     private int noOfRooms;
     private String floorType; 
     private String status;
+    
 
     @ManyToOne
     @JoinColumn(name = "building_id")
@@ -39,4 +42,12 @@ public class Floor {
 
     @OneToMany(mappedBy = "floor", cascade = CascadeType.ALL)
     private List<Room> rooms;
+    long countByBuilding_Id(Long buildingId) {
+		return 0;
+	}
+    @ManyToOne
+    @JoinColumn(name = "hostel_id")
+    private Hostel hostel;
+
+
 }

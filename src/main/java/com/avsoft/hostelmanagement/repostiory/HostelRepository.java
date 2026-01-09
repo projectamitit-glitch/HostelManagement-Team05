@@ -15,4 +15,7 @@ public interface HostelRepository extends JpaRepository<Hostel, Long>{
 	           "(:city IS NULL OR LOWER(a.city) LIKE LOWER(CONCAT('%', :city, '%'))) AND " +
 	           "(:area IS NULL OR LOWER(a.area) LIKE LOWER(CONCAT('%', :area, '%')))")
 	    List<Hostel> searchHostels(@Param("city") String city, @Param("area") String area);
+	
+	
+
 }
